@@ -1,120 +1,133 @@
-import React from 'react';
-import { Button } from './ui/button';
-import { ArrowRight, Download, Github, Linkedin, Mail } from 'lucide-react';
-import { personalInfo } from '../data/mock';
+import { motion } from 'framer-motion';
+import { Github, Linkedin, Mail, Phone, Download, ArrowDown } from 'lucide-react';
+import Button from './ui/Button';
+import { personalInfo } from '@/data/resume';
 
 const Hero = () => {
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  const socialLinks = [
+    { icon: Github, href: personalInfo.github, label: 'GitHub' },
+    { icon: Linkedin, href: personalInfo.linkedin, label: 'LinkedIn' },
+    { icon: Mail, href: `mailto:${personalInfo.email}`, label: 'Email' },
+    { icon: Phone, href: `tel:${personalInfo.phone}`, label: 'Phone' },
+  ];
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
-      {/* Grid pattern background */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.03)_1px,transparent_1px)] bg-[size:60px_60px]" />
-      
-      {/* Animated gradient orbs */}
-      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-blue-600/5 rounded-full blur-3xl animate-pulse-slow" />
-      <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-purple-600/5 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '1.5s' }} />
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-600/5 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '0.75s' }} />
+    <section id="home" className="min-h-screen flex items-center justify-center pt-16 relative overflow-hidden">
+      {/* Animated Background */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/30 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob" />
+        <div className="absolute top-40 right-10 w-72 h-72 bg-purple-300/30 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000" />
+        <div className="absolute bottom-20 left-1/2 w-72 h-72 bg-pink-300/30 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000" />
+      </div>
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-4xl mx-auto">
           {/* Greeting */}
-          <div className="mb-8 opacity-0 animate-[fadeIn_0.6s_ease-out_0.2s_forwards]">
-            <span className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-blue-950/60 to-purple-950/60 border border-blue-500/20 rounded-full text-blue-300 text-sm font-medium backdrop-blur-sm shadow-lg shadow-blue-500/10">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
-              </span>
-              Available for new opportunities
-            </span>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="mb-4"
+          >
+            <span className="text-lg text-primary font-medium">Hello, I'm</span>
+          </motion.div>
 
           {/* Name */}
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold mb-6 opacity-0 animate-[fadeIn_0.6s_ease-out_0.4s_forwards] leading-tight">
-            <span className="bg-gradient-to-r from-white via-blue-100 to-blue-200 bg-clip-text text-transparent drop-shadow-2xl">
-              {personalInfo.name}
-            </span>
-          </h1>
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 bg-gradient-to-r from-primary via-blue-600 to-purple-600 bg-clip-text text-transparent"
+          >
+            {personalInfo.name}
+          </motion.h1>
 
           {/* Title */}
-          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-8 opacity-0 animate-[fadeIn_0.6s_ease-out_0.6s_forwards]">
-            <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-400 bg-clip-text text-transparent">
-              {personalInfo.title}
-            </span>
-          </h2>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-6 text-muted-foreground"
+          >
+            {personalInfo.title}
+          </motion.h2>
 
-          {/* Tagline */}
-          <p className="text-lg md:text-xl lg:text-2xl text-slate-300 max-w-4xl mx-auto mb-12 leading-relaxed opacity-0 animate-[fadeIn_0.6s_ease-out_0.8s_forwards] font-light">
-            {personalInfo.tagline}
-          </p>
+          {/* Summary */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto"
+          >
+            {personalInfo.summary}
+          </motion.p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-wrap gap-5 justify-center mb-16 opacity-0 animate-[fadeIn_0.6s_ease-out_1s_forwards]">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="flex flex-wrap justify-center gap-4 mb-12"
+          >
             <Button
               size="lg"
-              className="group relative bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-10 py-7 text-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/50 border-0"
-              onClick={() => scrollToSection('projects')}
+              className="group"
+              onClick={() => document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' })}
             >
-              <span className="relative z-10 flex items-center">
-                View My Work
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-cyan-400 opacity-0 group-hover:opacity-20 transition-opacity rounded-md" />
+              Get In Touch
+              <Mail className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </Button>
             <Button
               size="lg"
               variant="outline"
-              className="border-2 border-slate-600 hover:border-blue-500 bg-slate-800/30 hover:bg-slate-800/60 backdrop-blur-sm text-white px-10 py-7 text-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/20"
+              className="group"
               onClick={() => window.open(personalInfo.resumeUrl, '_blank')}
             >
-              <Download className="mr-2 h-5 w-5" />
-              Download Resume
+              Download CV
+              <Download className="ml-2 h-4 w-4 group-hover:translate-y-1 transition-transform" />
             </Button>
-          </div>
+          </motion.div>
 
           {/* Social Links */}
-          <div className="flex gap-5 justify-center opacity-0 animate-[fadeIn_0.6s_ease-out_1.2s_forwards]">
-            <a
-              href={personalInfo.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group p-4 bg-slate-800/40 hover:bg-slate-800/80 backdrop-blur-sm border border-slate-700/50 hover:border-blue-500 rounded-xl transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-blue-500/20"
-              aria-label="GitHub Profile"
-            >
-              <Github className="h-6 w-6 text-slate-400 group-hover:text-blue-400 transition-colors" />
-            </a>
-            <a
-              href={personalInfo.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group p-4 bg-slate-800/40 hover:bg-slate-800/80 backdrop-blur-sm border border-slate-700/50 hover:border-blue-500 rounded-xl transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-blue-500/20"
-              aria-label="LinkedIn Profile"
-            >
-              <Linkedin className="h-6 w-6 text-slate-400 group-hover:text-blue-400 transition-colors" />
-            </a>
-            <a
-              href={`mailto:${personalInfo.email}`}
-              className="group p-4 bg-slate-800/40 hover:bg-slate-800/80 backdrop-blur-sm border border-slate-700/50 hover:border-blue-500 rounded-xl transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-blue-500/20"
-              aria-label="Email Contact"
-            >
-              <Mail className="h-6 w-6 text-slate-400 group-hover:text-blue-400 transition-colors" />
-            </a>
-          </div>
-        </div>
-      </div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="flex justify-center gap-4 mb-12"
+          >
+            {socialLinks.map((link, index) => (
+              <motion.a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.6 + index * 0.1 }}
+                className="p-3 rounded-full bg-accent hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110"
+                aria-label={link.label}
+              >
+                <link.icon className="h-5 w-5" />
+              </motion.a>
+            ))}
+          </motion.div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 opacity-0 animate-[fadeIn_0.6s_ease-out_1.4s_forwards]">
-        <div className="flex flex-col items-center gap-2 text-slate-400">
-          <span className="text-xs uppercase tracking-wider">Scroll</span>
-          <div className="w-6 h-10 border-2 border-slate-600 rounded-full p-1">
-            <div className="w-1.5 h-3 bg-blue-500 rounded-full mx-auto animate-bounce"></div>
-          </div>
+          {/* Scroll Indicator */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.8 }}
+            className="flex justify-center"
+          >
+            <motion.div
+              animate={{ y: [0, 10, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="cursor-pointer"
+              onClick={() => document.querySelector('#about').scrollIntoView({ behavior: 'smooth' })}
+            >
+              <ArrowDown className="h-6 w-6 text-primary" />
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>

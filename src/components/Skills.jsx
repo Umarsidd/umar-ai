@@ -1,112 +1,76 @@
-import React from 'react';
-import { Card } from './ui/card';
-import { Code2, Server, Database, Cloud, Wrench } from 'lucide-react';
-import { skills } from '../data/mock';
+import { motion } from 'framer-motion';
+import { Card, CardContent, CardHeader, CardTitle } from './ui/Card';
+import { skills } from '@/data/resume';
+import { Code, Server, Database, Cloud, Wrench } from 'lucide-react';
 
 const Skills = () => {
   const skillCategories = [
-    {
-      title: 'Frontend',
-      icon: Code2,
-      skills: skills.frontend,
-      color: 'blue'
-    },
-    {
-      title: 'Backend',
-      icon: Server,
-      skills: skills.backend,
-      color: 'cyan'
-    },
-    {
-      title: 'Database',
-      icon: Database,
-      skills: skills.database,
-      color: 'indigo'
-    },
-    {
-      title: 'Cloud & DevOps',
-      icon: Cloud,
-      skills: skills.cloudDevops,
-      color: 'sky'
-    },
-    {
-      title: 'Tools & Frameworks',
-      icon: Wrench,
-      skills: skills.tools,
-      color: 'violet'
-    }
+    { title: 'Frontend', data: skills.frontend, icon: Code, color: 'from-blue-500 to-cyan-500' },
+    { title: 'Backend', data: skills.backend, icon: Server, color: 'from-green-500 to-emerald-500' },
+    { title: 'Database', data: skills.database, icon: Database, color: 'from-purple-500 to-pink-500' },
+    { title: 'Cloud & DevOps', data: skills.cloudDevOps, icon: Cloud, color: 'from-orange-500 to-red-500' },
+    { title: 'Tools & Frameworks', data: skills.tools, icon: Wrench, color: 'from-yellow-500 to-amber-500' },
   ];
 
   return (
-    <section id="skills" className="py-32 bg-gradient-to-b from-slate-950 via-slate-950 to-slate-900 relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute top-40 left-1/4 w-96 h-96 bg-cyan-600/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-40 right-1/4 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl" />
-      
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-6xl mx-auto">
-          {/* Section Header */}
-          <div className="text-center mb-20">
-            <div className="inline-block mb-4 px-4 py-2 bg-cyan-950/30 border border-cyan-500/20 rounded-full text-cyan-400 text-sm font-semibold uppercase tracking-wider">
-              My Expertise
-            </div>
-            <h2 className="text-5xl md:text-6xl font-extrabold mb-6">
-              <span className="bg-gradient-to-r from-white via-cyan-100 to-white bg-clip-text text-transparent">
-                Technical Skills
-              </span>
-            </h2>
-            <div className="w-24 h-1.5 bg-gradient-to-r from-transparent via-cyan-500 to-transparent mx-auto mb-6" />
-            <p className="text-slate-300 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
-              A comprehensive toolkit of technologies and frameworks I work with to build robust, scalable applications
-            </p>
-          </div>
+    <section id="skills" className="py-20">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+          className="text-center mb-12"
+        >
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+            Technical <span className="text-primary">Skills</span>
+          </h2>
+          <div className="w-20 h-1 bg-primary mx-auto rounded-full" />
+          <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
+            Proficient in modern web technologies and cloud platforms with hands-on experience in building scalable applications.
+          </p>
+        </motion.div>
 
-          {/* Skills Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {skillCategories.map((category, index) => {
-              const IconComponent = category.icon;
-              const colorMap = {
-                blue: { bg: 'bg-blue-950/50', border: 'border-blue-800/50', icon: 'text-blue-400', hover: 'hover:border-blue-500' },
-                cyan: { bg: 'bg-cyan-950/50', border: 'border-cyan-800/50', icon: 'text-cyan-400', hover: 'hover:border-cyan-500' },
-                indigo: { bg: 'bg-indigo-950/50', border: 'border-indigo-800/50', icon: 'text-indigo-400', hover: 'hover:border-indigo-500' },
-                sky: { bg: 'bg-sky-950/50', border: 'border-sky-800/50', icon: 'text-sky-400', hover: 'hover:border-sky-500' },
-                violet: { bg: 'bg-violet-950/50', border: 'border-violet-800/50', icon: 'text-violet-400', hover: 'hover:border-violet-500' },
-              };
-              const colors = colorMap[category.color] || colorMap.blue;
-              
-              return (
-                <Card
-                  key={index}
-                  className={`group relative p-8 bg-gradient-to-br from-slate-800/60 to-slate-900/60 border ${colors.border} ${colors.hover} transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-${category.color}-500/10 backdrop-blur-sm overflow-hidden`}
-                >
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-600/0 to-purple-600/0 group-hover:from-blue-600/5 group-hover:to-purple-600/5 transition-all duration-500" />
-                  
-                  <div className="relative">
-                    <div className="flex items-center gap-4 mb-6">
-                      <div className={`p-4 ${colors.bg} border ${colors.border} rounded-xl group-hover:scale-110 transition-transform duration-300`}>
-                        <IconComponent className={`h-7 w-7 ${colors.icon}`} />
-                      </div>
-                      <h3 className="text-2xl font-bold text-white">
-                        {category.title}
-                      </h3>
-                    </div>
-                    <div className="flex flex-wrap gap-2.5">
-                      {category.skills.map((skill, skillIndex) => (
-                        <span
-                          key={skillIndex}
-                          className="group/skill px-4 py-2 bg-slate-800/80 hover:bg-slate-700/80 text-slate-300 hover:text-white text-sm font-medium rounded-lg border border-slate-700/50 hover:border-blue-500/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/20 cursor-default"
-                        >
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+          {skillCategories.map((category, index) => (
+            <motion.div
+              key={category.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+              viewport={{ once: true }}
+            >
+              <Card className="h-full hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <CardHeader>
+                  <div className={`w-12 h-12 rounded-lg bg-gradient-to-r ${category.color} flex items-center justify-center mb-4`}>
+                    <category.icon className="w-6 h-6 text-white" />
                   </div>
-                  
-                  <div className="absolute -bottom-2 -right-2 w-24 h-24 bg-blue-500/5 rounded-full blur-2xl group-hover:bg-blue-500/10 transition-all duration-500" />
-                </Card>
-              );
-            })}
-          </div>
+                  <CardTitle className="text-xl">{category.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-4">
+                    {category.data.map((skill) => (
+                      <div key={skill.name} className="space-y-2">
+                        <div className="flex justify-between items-center">
+                          <span className="text-sm font-medium">{skill.name}</span>
+                          <span className="text-xs text-muted-foreground">{skill.level}%</span>
+                        </div>
+                        <div className="h-2 bg-secondary rounded-full overflow-hidden">
+                          <motion.div
+                            initial={{ width: 0 }}
+                            whileInView={{ width: `${skill.level}%` }}
+                            transition={{ duration: 1, delay: 0.2 }}
+                            viewport={{ once: true }}
+                            className={`h-full bg-gradient-to-r ${category.color} rounded-full`}
+                          />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
