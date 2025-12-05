@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interview Prep Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        body {
+            background-color: #f3f4f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Inter', sans-serif;
+            padding: 2rem;
+        }
+        .a4-page {
+            width: 210mm;
+            min-height: 297mm;
+            background-color: white;
+            padding: 3rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            border-radius: 0.5rem;
+            line-height: 1.5;
+        }
+        .section-header {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #1f2937;
+        }
+        .subsection-header {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-top: 1rem;
+            color: #374151;
+        }
+        .bullet {
+            list-style-type: disc;
+            margin-left: 1.5rem;
+        }
+        .text-sm {
+            font-size: 0.875rem;
+            line-height: 1.25rem;
+        }
+        .text-xs {
+            font-size: 0.75rem;
+            line-height: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="a4-page">
+        <h1 class="text-3xl font-bold text-center mb-6 text-gray-800">Software Engineer Interview Topics</h1>
+        
+        <div class="mb-6">
+            <h2 class="section-header">1. Frontend (React.js, Next.js, JS/TS, Tailwind)</h2>
+            <ul class="space-y-2 text-sm">
+                <li>
+                    <p class="subsection-header">React basics</p>
+                    <ul class="bullet space-y-1 mt-1">
+                        <li><strong>State:</strong> Data that determines how a component renders.</li>
+                        <li><strong>Props:</strong> Pass data from parent to child components.</li>
+                        <li><strong>Lifecycle methods:</strong> Functions called at specific stages (now largely replaced by hooks).</li>
+                        <li><strong>Hooks:</strong>
+                            <ul class="bullet space-y-1 ml-4 mt-1">
+                                <li><code>useState</code>: Adds state to a functional component.</li>
+                                <li><code>useEffect</code>: Handles side effects after rendering.</li>
+                                <li><code>useContext</code>: Provides a way to share data globally.</li>
+                                <li><code>useReducer</code>: Manages complex state logic.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <p class="subsection-header">Next.js</p>
+                    <ul class="bullet space-y-1 mt-1">
+                        <li><strong>SSR:</strong> Renders on the server for better SEO.</li>
+                        <li><strong>SSG:</strong> Generates HTML at build time for speed.</li>
+                        <li><strong>ISR:</strong> Regenerates static pages incrementally.</li>
+                        <li><strong>API routes:</strong> Create a backend API within your app.</li>
+                        <li><strong>Routing:</strong> File-system based routing.</li>
+                        <li><strong>Middleware:</strong> Functions that run before a request is completed.</li>
+                    </ul>
+                </li>
+                <li>
+                    <p class="subsection-header">Advanced JS/TS</p>
+                    <ul class="bullet space-y-1 mt-1">
+                        <li><strong>Promises:</strong> Handle asynchronous operations.</li>
+                        <li><code>async/await</code>: Syntactic sugar for Promises.</li>
+                        <li><strong>Closures:</strong> Functions that remember their parent scope.</li>
+                        <li><strong>Event loop:</strong> The mechanism for non-blocking I/O.</li>
+                    </ul>
+                </li>
+                <li>
+                    <p class="subsection-header">Styling with Tailwind</p>
+                    <ul class="bullet space-y-1 mt-1">
+                        <li><strong>Responsive design:</strong> Using utility classes like <code>md:</code> and <code>lg:</code>.</li>
+                        <li><strong>Conditional classes:</strong> Applying classes with JavaScript logic.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="mb-6">
+            <h2 class="section-header">2. Backend (Node.js, Express, REST APIs, Microservices)</h2>
+            <ul class="space-y-2 text-sm">
+                <li>
+                    <p class="subsection-header">Core Concepts</p>
+                    <ul class="bullet space-y-1 mt-1">
+                        <li><strong>REST APIs:</strong> Creating endpoints (<code>GET</code>, <code>POST</code>, etc.) in Express.</li>
+                        <li><strong>Middleware:</strong> A series of functions that execute in order.</li>
+                        <li><strong>Authentication & authorization:</strong>
+                            <ul class="bullet space-y-1 ml-4 mt-1">
+                                <li><strong>JWT:</strong> A compact, stateless authentication token.</li>
+                                <li><strong>Sessions & cookies:</strong> Storing user data on the server.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <p class="subsection-header">Microservices</p>
+                    <ul class="bullet space-y-1 mt-1">
+                        <li><strong>Communication:</strong> Via REST or message queues.</li>
+                        <li><strong>Scaling:</strong> Services can be scaled independently.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="mb-6">
+            <h2 class="section-header">3. Databases (MongoDB, MySQL, PostgreSQL, Redis)</h2>
+            <ul class="space-y-2 text-sm">
+                <li>
+                    <p class="subsection-header">MongoDB (NoSQL)</p>
+                    <ul class="bullet space-y-1 mt-1">
+                        <li><strong>Schema design:</strong> Structuring data.</li>
+                        <li><strong>Indexing:</strong> Speeding up queries.</li>
+                        <li><strong>Aggregation pipeline:</strong> For complex data processing.</li>
+                    </ul>
+                </li>
+                <li>
+                    <p class="subsection-header">SQL (MySQL/PostgreSQL)</p>
+                    <ul class="bullet space-y-1 mt-1">
+                        <li><strong>Joins:</strong> Combining data from multiple tables.</li>
+                        <li><strong>Subqueries:</strong> A query inside another query.</li>
+                        <li><strong>Normalization:</strong> Reducing data redundancy.</li>
+                    </ul>
+                </li>
+                <li>
+                    <p class="subsection-header">Redis (In-memory)</p>
+                    <ul class="bullet space-y-1 mt-1">
+                        <li><strong>Caching:</strong> Storing frequently accessed data.</li>
+                        <li><strong>Session storage:</strong> Fast retrieval of user sessions.</li>
+                        <li><strong>Pub/Sub:</strong> Messaging pattern for communication.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="mb-6">
+            <h2 class="section-header">4. Cloud & DevOps (AWS, GCP, Docker, Kubernetes, Jenkins)</h2>
+            <ul class="space-y-2 text-sm">
+                <li>
+                    <p class="subsection-header">AWS Services</p>
+                    <ul class="bullet space-y-1 mt-1">
+                        <li><strong>EC2:</strong> Virtual servers.</li>
+                        <li><strong>S3:</strong> Object storage.</li>
+                        <li><strong>Lambda:</strong> Serverless computing.</li>
+                        <li><strong>RDS:</strong> Managed relational databases.</li>
+                    </ul>
+                </li>
+                <li>
+                    <p class="subsection-header">Docker</p>
+                    <ul class="bullet space-y-1 mt-1">
+                        <li><strong>Containerization:</strong> Packaging apps with dependencies.</li>
+                        <li><strong>Dockerfile:</strong> Script to build an image.</li>
+                        <li><strong>Volumes:</strong> Persisting data.</li>
+                    </ul>
+                </li>
+                <li>
+                    <p class="subsection-header">Kubernetes</p>
+                    <ul class="bullet space-y-1 mt-1">
+                        <li><strong>Pods:</strong> Smallest deployable units.</li>
+                        <li><strong>Deployments:</strong> Manage sets of replica pods.</li>
+                        <li><strong>Services:</strong> Expose pods as a network service.</li>
+                    </ul>
+                </li>
+                <li>
+                    <p class="subsection-header">CI/CD Pipeline</p>
+                    <ul class="bullet space-y-1 mt-1">
+                        <li><strong>Jenkins:</strong> Automates building, testing, and deploying.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="mb-6">
+            <h2 class="section-header">5. Key Projects (Food Delivery App, Scholarship Portal)</h2>
+            <ul class="space-y-2 text-sm">
+                <li>
+                    <p class="subsection-header">Food Delivery App</p>
+                    <ul class="bullet space-y-1 mt-1">
+                        <li><strong>JWT auth:</strong> Stateless authentication flow.</li>
+                        <li><strong>Payment gateway:</strong> Integrating a third-party service.</li>
+                        <li><strong>Real-time tracking:</strong> Using WebSockets.</li>
+                    </ul>
+                </li>
+                <li>
+                    <p class="subsection-header">Scholarship Portal</p>
+                    <ul class="bullet space-y-1 mt-1">
+                        <li><strong>Form validation:</strong> Ensuring correct user input.</li>
+                        <li><strong>Email notifications:</strong> Automated emails via Nodemailer.</li>
+                        <li><strong>Admin dashboard:</strong> Interface for management.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="mb-6">
+            <h2 class="section-header">6. Other Tools</h2>
+            <ul class="space-y-2 text-sm">
+                <li>
+                    <p class="subsection-header">PySpark</p>
+                    <ul class="bullet space-y-1 mt-1">
+                        <li><strong>ETL pipeline:</strong> Extracts, transforms, and loads data.</li>
+                        <li><strong>Dataframes:</strong> Distributed collections of data.</li>
+                    </ul>
+                </li>
+                <li>
+                    <p class="subsection-header">Power BI</p>
+                    <ul class="bullet space-y-1 mt-1">
+                        <li><strong>Dashboards:</strong> Creating interactive visualizations.</li>
+                    </ul>
+                </li>
+                <li>
+                    <p class="subsection-header">Struts</p>
+                    <ul class="bullet space-y-1 mt-1">
+                        <li><strong>Java framework:</strong> Legacy web application development.</li>
+                    </ul>
+                </li>
+                <li>
+                    <p class="subsection-header">Agile/Scrum</p>
+                    <ul class="bullet space-y-1 mt-1">
+                        <li><strong>Ceremonies:</strong> Standups, reviews, retrospectives.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="mb-6">
+            <h2 class="section-header">🎯 Must-Revise Interview Topics</h2>
+            <ul class="bullet space-y-2 text-sm">
+                <li><strong>DSA & Problem Solving:</strong> Arrays, strings, hashing, recursion, stacks/queues, DP.</li>
+                <li><strong>System Design (basic):</strong> Designing scalable systems (e.g., URL shortener, chat app).</li>
+                <li><strong>Behavioral:</strong> Discussing teamwork, challenges, and solutions.</li>
+                <li><strong>SQL Queries:</strong> Writing queries with joins, grouping, and window functions.</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
